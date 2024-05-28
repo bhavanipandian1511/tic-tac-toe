@@ -1,8 +1,8 @@
 const box = document.querySelectorAll('.box');
 const statustxt = document.getElementById('#status');
 const btnRestart = document.querySelector('#resart');
-let x="<img src ='.\images X.png'>";
-let o="<img src ='.\image o.jpg'>";
+let x="<img src ='C:\Users\Bhavani\Desktop\Study\java_script_recap\tic-tac-toe\image\images X.png'>";
+let o="<img src ='C:\Users\Bhavani\Desktop\Study\java_script_recap\tic-tac-toe\image\image o.jpg'>";
 
 const win = [
     [0,1,2],
@@ -16,9 +16,9 @@ const win = [
 ];
 
 let options=["","","","","","","","",""];
-let currentPlayer = x;
+let currentPlayer=x;
 let player="X";
-let isGameActive = false;
+let isGameActive=false;
 init();
 function init(){
 box.forEach(box=>box.addEventListener('click',boxClick));
@@ -28,11 +28,16 @@ isGameActive=true;
 }
 
 function boxClick(){
-    console.log(this.dataset.index);
-
+   const index=this.dataset.index;
+   if(options[index]!="" ||!isGameActive){
+    return;
+}
+UpdateBox(this,index);
 }
 
-function updateBox(box,index){
+function UpdateBox(box,index){
+    options[index]=player;
+    box.innerHTML=currentPlayer;
 
 }
 
